@@ -57,18 +57,28 @@ body {
 }
 
 .score {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  justify-content: space-around;
   font-size: 1.2rem;
   color: #fff;
+  text-align: center;
+  flex-wrap: wrap;
 }
-
+@media  (min-width: 700px){
+  .score {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.score p {
+  background: var(--dark-color);
+}
 .score p:first-child {
   background: var(--primary-color);
 }
 
 .score p:last-child {
-  background: var(--dark-color);
+  background-color: #28a745;
 }
 
 .choices {

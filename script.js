@@ -15,7 +15,8 @@ window.addEventListener('DOMContentLoaded',() => {
         restart = document.querySelector('#restart')
         scoreBoard = {
             player: 0,
-            computer: 0
+            computer: 0,
+            durrang: 0
         };
 //Play game
 function play(event) {
@@ -69,26 +70,28 @@ function showWinner(winner, computerChoice){
     if(winner==='player') {
         scoreBoard.player++
         result.innerHTML = `
-        <h1 class="text-win">You win</h1>
+        <h1 class="text-win">Siz yutdingiz!</h1>
         <i class = "choice fas fa-hand-${computerChoice}  fa-10x"></i>
-        <p>Computer Choice <strong>${computerChoice.charAt(0).toUpperCase()+computerChoice.slice(1)}</strong></p>`
+        <p>Bot <strong>${computerChoice.charAt(0).toUpperCase()+computerChoice.slice(1)}</strong>ni tanlagan edi</p>`
     }else if (winner === 'computer') {
         scoreBoard.computer++
         result.innerHTML = `
-        <h1 class="text-lose">You lose</h1>
+        <h1 class="text-lose">Siz yutqazdingiz!</h1>
         <i class="fas fa-hand-${computerChoice} fa-10x"></i>
-        <p>Computer chose <strong>${computerChoice.charAt(0).toUpperCase()+computerChoice.slice(1)}</strong></p>
+        <p>Bot <strong>${computerChoice.charAt(0).toUpperCase()+computerChoice.slice(1)}</strong>ni tanlagan edi</p>
         `
     }else {
+        scoreBoard.durrang++
         result.innerHTML = `
-            <h1>It's A Draw</h1>
+            <h1>Durrang</h1>
             <i class="fas fa-hand-${computerChoice} fa-10x"></i>
-            <p>Computer chose <strong>${computerChoice.charAt(0).toUpperCase()+computerChoice.slice(1)}</strong></p>
+            <p>Bot ham <strong>${computerChoice.charAt(0).toUpperCase()+computerChoice.slice(1)}</strong>ni tanlagan edi</p>
         `
     }
     score.innerHTML = `
-        <p> Player: ${scoreBoard.player}</p>
-        <p> Computer: ${scoreBoard.computer}</p>`
+        <p> O'yinchi: ${scoreBoard.player}</p>
+        <p> Kampyuter: ${scoreBoard.computer}</p>
+        <p> durrang: ${scoreBoard.durrang}</p>`
     modal.style.display = 'block'
 }
 
@@ -98,9 +101,11 @@ function showWinner(winner, computerChoice){
 function restertGame() {
     scoreBoard.player = 0
     scoreBoard.computer = 0
+    scoreBoard.durrang = 0
     score.innerHTML = `
-        <p> Player: ${scoreBoard.player}</p>
-        <p> Computer: ${scoreBoard.computer}</p>`
+        <p> O'yinchi: ${scoreBoard.player}</p>
+        <p> Bot: ${scoreBoard.computer}</p>
+        <p> durrang: ${scoreBoard.durrang}</p>`
     }
 
 // clearModal
